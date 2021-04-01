@@ -1,0 +1,84 @@
+\documentclass[11pt]{article}
+\usepackage{fullpage}
+\usepackage{url}
+\usepackage{color}
+\usepackage{amsmath, amssymb}
+
+\textheight=8.85in
+
+\pagestyle{myheadings}
+
+\setlength{\tabcolsep}{0in}
+\begin{document}
+
+\thispagestyle {empty}
+
+\newcommand{\lsp}[1]{\large\renewcommand{\baselinestretch}{#1}\normalsize}
+\newcommand{\hsp}{\hspace{.2in}}
+\newcommand{\comment}[1]{}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{lem}{Lemma}[section]
+\newtheorem{cor}{Corollary}[section]
+\newtheorem{prop}{Proposition}[section]
+\newtheorem{problem}{Problem}[section]
+
+\newcommand{\R}{{\rm\hbox{I\kern-.15em R}}}
+\newcommand{\IR}{{\rm\hbox{I\kern-.15em R}}}
+\newcommand{\IN}{{\rm\hbox{I\kern-.15em N}}}
+\newcommand{\IZ}{{\sf\hbox{Z\kern-.40em Z}}}
+\newcommand{\IS}{{\rm\hbox{S\kern-.45em S}}}
+\newcommand{\Real}{I\!\!R}
+
+
+\newcommand{\linesep}{\vspace{.2cm}\hrule\vspace{0.2cm}}
+\newcommand{\categorysep}{\vspace{0.5cm}}
+\newcommand{\entrysep}{\vspace{0cm}}
+
+\newcommand{\category}[1]{\categorysep
+                  \noindent {\bf \large #1}
+              \linesep}
+
+\pagestyle{empty}
+
+\begin{center}
+{\large \textbf{CSE 847 (Spring 2021): Machine Learning--- Homework 2}} \\
+ Instructor: Jiayu Zhou \quad
+ Due on Wednesday, Feb 24 11:59 PM Easter Time. \\
+ All submissions should be uploaded to D2L.
+\end{center}
+
+\section{Linear Algebra II}
+
+\begin{enumerate}
+\item (20 points) Compute (by hand) the eigenvalues and the eigenvectors of the following matrix:
+$$A = \begin{pmatrix} 2 & 1 & 0 \\ 1 & 2& 0\\ 0 & 0 & 1 \end{pmatrix}.$$
+\item Given the three vectors $v_1 = (2, 0, -1), v_2 = (0, -1, 0)$ and $v_3 = (2, 0, 4)$ in $\mathbb R^3$.
+\begin{itemize}
+\item (10 points) Show that they form an orthogonal set under the standard 
+      Euclidean inner product for $\mathbb R^3$ but not an orthonormal set. 
+\item (10 points) Turn them into a set of vectors that will form an orthonormal set of 
+      vectors under the standard Euclidean inner product for $\mathbb R^3$. 
+\end{itemize}
+
+\item (10 points) Suppose that $A$ is an $n \times m$ matrix with linearly independent columns.
+      Show that $A^T A$ is an invertible matrix. 
+
+\item (10 points) Suppose that $A$ is an $n \times m$ matrix with linearly independent columns.
+      Let $\bar x$ be a least squares solution to the system of equations $Ax = b$ (the solution of $\min_x \|Ax - b\|_2^2$).
+      Show that $\bar x$ is the \textbf{unique} solution to the associated normal system 
+      $A^T A \bar x = A^T b$. 
+
+\end{enumerate}
+
+
+\section{Linear Regression I} 
+
+Questions in the textbook Pattern Recognition and Machine Learning:
+\begin{enumerate}
+\item (10 points) Page 174, Question 3.2
+\item (10 points) Page 175, Question 3.7
+\item (10 points) Page 175, Question 3.10
+\item (10 points) Page 175, Question 3.11
+\end{enumerate}
+
+\end{document}
