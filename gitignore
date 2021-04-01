@@ -1,8 +1,5 @@
 /*.mp4
-<<<<<<< HEAD
 /*.mov
-=======
->>>>>>> 3f0efb991ee44e3a76c6eb191f52bcd5f780a284
 /*.tex
 /*.aug
 /*.bib
@@ -11,8 +8,5 @@
 /*.log
 /*.out
 /*.gz
-<<<<<<< HEAD
-.DS_Store
-=======
 /.DS_Store
->>>>>>> 3f0efb991ee44e3a76c6eb191f52bcd5f780a284
+
