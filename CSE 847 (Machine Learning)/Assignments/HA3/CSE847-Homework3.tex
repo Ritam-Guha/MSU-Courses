@@ -1,0 +1,117 @@
+\documentclass[11pt]{article}
+\usepackage{fullpage}
+\usepackage{url}
+\usepackage{color}
+\usepackage{amsmath, amssymb}
+\usepackage{hyperref}
+\usepackage{adjustbox}
+\usepackage{multirow}
+
+\textheight=8.85in
+
+\pagestyle{myheadings}
+
+
+\renewcommand{\arraystretch}{1.5}
+\setlength{\tabcolsep}{12pt}
+\usepackage{float}
+
+\begin{document}
+
+\thispagestyle {empty}
+
+
+\newcommand{\lsp}[1]{\large\renewcommand{\baselinestretch}{#1}\normalsize}
+\newcommand{\hsp}{\hspace{.2in}}
+\newcommand{\comment}[1]{}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{lem}{Lemma}[section]
+\newtheorem{cor}{Corollary}[section]
+\newtheorem{prop}{Proposition}[section]
+\newtheorem{problem}{Problem}[section]
+
+\newcommand{\R}{{\rm\hbox{I\kern-.15em R}}}
+\newcommand{\IR}{{\rm\hbox{I\kern-.15em R}}}
+\newcommand{\II}{{\rm\hbox{I\kern-.15em I}}}
+\newcommand{\IN}{{\rm\hbox{I\kern-.15em N}}}
+\newcommand{\IZ}{{\sf\hbox{Z\kern-.40em Z}}}
+\newcommand{\IS}{{\rm\hbox{S\kern-.45em S}}}
+\newcommand{\Real}{I\!\!R}
+
+
+\newcommand{\linesep}{\vspace{.2cm}\hrule\vspace{0.2cm}}
+\newcommand{\categorysep}{\vspace{0.5cm}}
+\newcommand{\entrysep}{\vspace{0cm}}
+
+\newcommand{\category}[1]{\categorysep
+                  \noindent {\bf \large #1}
+              \linesep}
+
+\pagestyle{empty}
+
+\begin{center}
+{\large \textbf{CSE 847 (Spring 2021): Machine Learning--- Homework 3}} \\
+ Instructor: Jiayu Zhou \\
+ Due on Wednesday, Mar 17 11:59 PM Eastern Time. 
+\end{center}
+
+\section{Linear Algebra III}
+
+\begin{enumerate}
+
+\item (10 points) Let $A \in \IR^{m \times n}$ be a matrix of rank $n$. Prove that $\| A(A^T A)^{-1} A^T \|_2 = 1$. 
+
+\item (10 points) Let $A$ and $B$ be two positive semi-definite matrices in $\IR^{n \times n}$. Prove or disprove: 
+\begin{enumerate}
+\item $A+ B$ is positive semi-definite
+\item $AB$ is positive semi-definite 
+\item $B^T$ is positive semi-definite
+\end{enumerate} 
+
+\end{enumerate}
+
+
+\section{Linear Classification} 
+
+Questions in the textbook Pattern Recognition and Machine Learning:
+\begin{enumerate}
+\item (10 points) Page 220, Question 4.1
+\item (10 points) Page 221, Question 4.5
+\item (10 points) Page 221, Question 4.6
+\item (10 points) Page 222, Question 4.15
+\end{enumerate}
+
+\section{Linear Regression: Experiment} 
+
+ (40 points) In this part of homework you will explore the ridge regression and the effects of
+$\ell_2$-norm regularization. You are to implement a MATLAB solver for ridge regression:
+$$ \min_w \frac{1}{2}\|Xw - y\|_2^2 + \frac{\lambda}{2} \|w\|_2^2. $$
+You are not allowed to use the integrated ridge regression in MATLAB.
+You will use your solver to investigate the effects of the regularization on the \textsc{Diabetes}\footnote{\url{https://github.com/jiayuzhou/CSE847/blob/master/data/diabetes.mat?raw=true}}
+dataset, and study the cross validation procedure.
+
+\begin{enumerate}
+\item Implement the ridge regression solver.  
+\item Train regression models on the \textsc{Diabetes} dataset using 
+the training data (x\_train, y\_train variables in the data file). 
+Vary the $\lambda$ from ${1e-5}, {1e-4}, {1e-3}, {1e-2}, {1e-1}, 1, 10$ (In 
+Matlab $1e-1$ means $0.1$). 
+Compute training error (predict y\_train given X\_train), testing error (predict y\_test given X\_test) for each $\lambda$. 
+The error is measured by mean squared error (MSE):
+$$
+\mbox{MSE} = \frac{1}{N}\sum_{i=1}^N (y_i - \hat y_i)^2,
+$$
+where $N$ is the number of samples on which the error is computed, $y_i$ 
+is ground truth, and $\hat y_i$ is the prediction from data points 
+given model $w$. 
+\item Perform 5-fold cross validation on the training data to estimate the best $\lambda$ from training data.
+\end{enumerate}
+
+In the homework, attach a brief report. In the report you need to
+discuss your findings in the experiment, include a plot showing how
+training/testing error changes when you vary the parameter $\lambda$ (use log
+scale on $\lambda$). In the same plot, show the best $\lambda$ obtained from
+your 5-fold cross validation procedure. Submit the MATLAB code (do add some comments in your code for others to understand your code) to the D2L along with your report. \\
+
+
+\end{document}

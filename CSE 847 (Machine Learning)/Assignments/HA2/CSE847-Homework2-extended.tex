@@ -1,0 +1,218 @@
+\documentclass[11pt]{article}
+\usepackage{fullpage}
+\usepackage{url}
+\usepackage{color}
+\usepackage{amsmath, amssymb, bm}
+\usepackage{ulem}
+\usepackage{framed}
+\usepackage{xcolor}
+
+\textheight=8.85in
+
+\pagestyle{myheadings}
+
+\setlength{\tabcolsep}{0in}
+\begin{document}
+
+\thispagestyle {empty}
+
+\newcommand{\lsp}[1]{\large\renewcommand{\baselinestretch}{#1}\normalsize}
+\newcommand{\hsp}{\hspace{.2in}}
+\newcommand{\comment}[1]{}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{lem}{Lemma}[section]
+\newtheorem{cor}{Corollary}[section]
+\newtheorem{prop}{Proposition}[section]
+\newtheorem{problem}{Problem}[section]
+
+\newcommand{\R}{{\rm\hbox{I\kern-.15em R}}}
+\newcommand{\IR}{{\rm\hbox{I\kern-.15em R}}}
+\newcommand{\IN}{{\rm\hbox{I\kern-.15em N}}}
+\newcommand{\IZ}{{\sf\hbox{Z\kern-.40em Z}}}
+\newcommand{\IS}{{\rm\hbox{S\kern-.45em S}}}
+\newcommand{\Real}{I\!\!R}
+
+\newcommand{\bPhi}{\bm{\Phi}}
+\newcommand{\bphi}{\bm{\phi}}
+\newcommand{\bw}{\mathbf{w}}
+\newcommand{\bt}{\mathbf{t}}
+\newcommand{\bx}{\mathbf{x}}
+\newcommand{\by}{\mathbf{y}}
+\newcommand{\bX}{\mathbf{X}}
+\newcommand{\bmm}{\mathbf{m}}
+\newcommand{\bS}{\mathbf{S}}
+
+\newcommand{\linesep}{\vspace{.2cm}\hrule\vspace{0.2cm}}
+\newcommand{\categorysep}{\vspace{0.5cm}}
+\newcommand{\entrysep}{\vspace{0cm}}
+
+\newcommand{\category}[1]{\categorysep
+                  \noindent {\bf \large #1}
+              \linesep}
+
+\pagestyle{empty}
+
+\begin{center}
+{\large \textbf{CSE 847 (Spring 2021): Machine Learning--- Homework 2}} \\
+ Instructor: Jiayu Zhou \quad
+ Due on {\color{red}\sout{Wednesday, Feb 24} Monday, Mar 1st} 11:59 PM Easter Time. \\
+ All submissions should be uploaded to D2L.
+\end{center}
+
+\section{Linear Algebra II}
+
+\begin{enumerate}
+\item (20 points) Compute (by hand) the eigenvalues and the eigenvectors of the following matrix:
+$$A = \begin{pmatrix} 2 & 1 & 0 \\ 1 & 2& 0\\ 0 & 0 & 1 \end{pmatrix}.$$
+\item Given the three vectors $v_1 = (2, 0, -1), v_2 = (0, -1, 0)$ and $v_3 = (2, 0, 4)$ in $\mathbb R^3$.
+\begin{itemize}
+\item (10 points) Show that they form an orthogonal set under the standard 
+      Euclidean inner product for $\mathbb R^3$ but not an orthonormal set. 
+\item (10 points) Turn them into a set of vectors that will form an orthonormal set of 
+      vectors under the standard Euclidean inner product for $\mathbb R^3$. 
+\end{itemize}
+
+\item (10 points) Suppose that $A$ is an $n \times m$ matrix with linearly independent columns.
+      Show that $A^T A$ is an invertible matrix. 
+
+\item (10 points) Suppose that $A$ is an $n \times m$ matrix with linearly independent columns.
+      Let $\bar x$ be a least squares solution to the system of equations $Ax = b$ (the solution of $\min_x \|Ax - b\|_2^2$).
+      Show that $\bar x$ is the \textbf{unique} solution to the associated normal system 
+      $A^T A \bar x = A^T b$. 
+
+\end{enumerate}
+
+
+\section{Linear Regression I} 
+
+Questions in the textbook Pattern Recognition and Machine Learning:
+\begin{enumerate}
+\item (10 points) Page 174, Question 3.2
+\begin{framed}
+Show that the matrix
+$$ \bPhi (\bPhi^T \bPhi)^{-1} \bPhi^T $$
+takes any vector v and projects it onto the space spanned by the columns of $\bPhi$. Use this result to show that the least-squares solution (3.15):
+\begin{align*}%\color{blue}
+\bw_{\text{ML}} = (\bPhi^T \bPhi)^{-1} \bPhi^T \bt \tag{3.15}
+\end{align*}
+ corresponds to an orthogonal projection of the vector $\bt$ onto the manifold $\mathcal S$ as shown in Figure 3.2.
+\end{framed}
+
+\item (10 points) Page 175, Question 3.7
+\begin{framed}
+By using the technique of completing the square, verify the result (3.49) for the posterior distribution of the parameters $\bw$ in the linear basis function model in which $\mathbf m_N$ and $\bS_N$ are defined by (3.50) and (3.51) respectively.
+{
+\begin{align*}
+p(\bw | \bt)  =& \mathcal N (\bw | \mathbf m_N , \bS_N) \tag{3.49}\\
+\mathbf m_N   =& \bS_N (\bS_0^{-1} \mathbf m_0 + \beta \bPhi^T \bt)  \tag{3.50}\\
+\bS_N^{-1}    =& \bS_0^{-1} + \beta \bPhi^T \bPhi  \tag{3.51}
+\end{align*}}
+\end{framed}
+
+\textit{Hint:} From Bayes' theorem we have 
+$$
+p(\bw | \bt) \propto p(\bt | \bw) p(\bw)
+$$
+where the factors on the r.h.s are given by (3.10) and (3.48), respectively. 
+\begin{align*}
+p(\bt | \mathbf X, \bw, \beta ) &= \prod_{n=1}^N \mathcal N (t_n | \bw^T \bphi(\bx_n), \beta^{-1} )  \tag {3.10}\\
+p(\bw) &= \mathcal N (\bw| \mathbf m_0, \bS_0) \tag {3.48}
+\end{align*}
+then plugin: 
+\begin{align*}
+p(\bw | \bt) 
+&\propto 
+{\color{black}\left[ \prod_{n=1}^N \mathcal N(t_n | \bw^T \bphi(\bx_n), \beta^{-1}) \right]}
+{\color{black}\mathcal N (\bw | \mathbf m_0, \bS_0)}\\
+&\propto 
+{\color{black}\exp\left( -\frac{\beta}{2} (\bt - \bPhi \bw)^T (\bt - \bPhi \bw) \right) }
+{\color{black}\exp\left( -\frac{1}{2}(\bw - \mathbf m_0)^T \bS_0^{-1} (\bw - \mathbf m_0) \right)}
+\end{align*}
+Then expand the terms and reorganize to get to a term that is propotional to (3.49).
+
+\item (10 points) Page 175, Question 3.10
+
+\begin{framed}
+By making use of the result (2.115) to evaluate the integral in (3.57), verify that the predictive distribution for the Bayesian linear regression model is given by (3.58) in which the input-dependent variance is given by (3.59).
+{%\color{blue}
+\begin{align*}
+p(t|\bt, \alpha, \beta) 
+&= \int p(t| \bw, \beta) p(\bw | \bt, \alpha, \beta) d \bw
+\tag{3.57}\\
+p(t| \bx, \bt, \alpha, \beta) &= \mathcal N (t | \bmm_N^T \bphi(\bx), \sigma_N^2(\bx))
+\tag{3.58}\\
+\sigma_N^2 (\bx) &= \frac{1}{\beta} + \bphi(\bx)^T \bS_N \bphi(\bx). 
+\tag{3.59}
+\end{align*}
+
+\noindent\textbf{Marginal and Conditional Gaussians}
+Given a marginal Gaussian distribution for $\bx$ and a conditional Gaussian distri- bution for $y$ given $\bx$ in the form
+\begin{align*}
+p(\bx)             &= \mathcal N (\bx | \bm{\mu}, \bm \Lambda^{-1}) \tag{2.113}\\
+p(\mathbf y | \bx) &= \mathcal N (\by | \mathbf A \bx + \mathbf b, \mathbf L^{-1}) \tag{2.114}
+\end{align*}
+the marginal distribution of y and the conditional distribution of x given y are given by
+\begin{align*}
+p(\by) = \mathcal N(\by | \mathbf A \bm \mu + \mathbf b, 
+      \mathbf L^{-1} + \mathbf A \bm \Lambda^{-1} \mathbf A^T)\tag{2.115}\\
+p(\bx| \by) = \mathcal N (\bx | \bm \Sigma \{  \mathbf A^T \mathbf L (\by - \mathbf b) + \bm \Lambda \bm \mu\}, \bm \Sigma)
+\tag{2.116}
+\end{align*}
+where 
+\begin{align*}
+\Sigma = (\bm \Lambda + \mathbf A^T \mathbf L \mathbf A)^{-1} \tag{2.117}
+\end{align*}}
+\end{framed}
+
+
+\textit{Hint:} Using (3.3), (3.8) and (3.49), 
+{%\color{blue}
+\begin{align*}
+y(\bx, \bw) &= \bw^T \bphi(\bx) \tag{3.3}\\
+p(t|\bx, \bw, \beta) &= \mathcal N (t|y(\bx, \bw), \beta^{-1}) \tag{3.8}\\
+p(\bw | \bt) &= \mathcal N(\bw | \bmm_N, \bS_N) \tag{3.49}
+\end{align*}}
+we can re-write (3.57) as
+\begin{align*}
+p(t|\bx, \bt, \alpha, \beta) 
+&= \int p(t| \bx, \bw, \beta) p(\bw | \bt, \alpha, \beta) d \bw
+= \int \mathcal N (t | \bphi(\bx)^T \bw, \beta^{-1}) 
+\mathcal N (\bw | \bmm_N, \bS_N) d \bw 
+\end{align*}
+By matching the first factor of the integrand with (2.114) and the second factor with (2.113), we obtain the desired result directly from (2.115).
+
+
+\item (10 points) Page 175, Question 3.11
+\begin{framed}
+We have seen that, as the size of a data set increases, the uncertainty associated with the posterior distribution over model parameters decreases. Make use of the matrix identity (Appendix C)
+\begin{align*}
+(\mathbf M + \mathbf v \mathbf v^T)
+= \mathbf M^{-1} - 
+\frac{(\mathbf M^{-1} \mathbf v) (\mathbf v^T \mathbf M^{-1}) }
+{1 + \mathbf v^T \mathbf M^{-1} \mathbf v}
+\tag{3.110}
+\end{align*}
+to show that the uncertainty $\sigma^2_N (\bx)$ associated with the linear regression function given by (3.59) satisfies
+$$\sigma_{N+1}^2 (\bx) \leq \sigma_{N}^2 (\bx)$$
+\end{framed}
+
+\textit{Hint:} From (3.59) 
+\begin{align}
+\sigma_{N+1}^2 (\bx) = \frac{1}{\beta} + \bphi(\bx)^T \bS_{N+1} \bphi(\bx) \tag{3.59}
+\end{align}
+where $\bS_{N+1}$ is given by (r.f. Question 3.8):
+\begin{align}
+\bS_{N+1}^{-1} = \bS_N^{-1} + \beta \bphi_{N+1} \bphi_{N+1}^T. \tag{P}
+\end{align}
+From (P) and (3.110) we get a relationship between $\bS_{N+1}$ and $\bS_{N}$, and then we can plugin to (3.59), and finally get a relationship: 
+\begin{align*}
+\sigma_{N+1}^2 (\bx) &= \frac{1}{\beta} + \bphi(\bx)^T \bS_{N+1} \bphi(\bx) \\
+                     &= \sigma_{N}^2 (\bx) + {\color{red}\square}
+\end{align*}
+Analyze ${\color{red}\square}$ to complete the proof. 
+
+
+
+\end{enumerate}
+
+\end{document}
