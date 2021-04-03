@@ -1,0 +1,12 @@
+*.mp4
+*.mov
+*.tex
+*.aug
+*.bib
+*.aux
+*.bbl
+*.log
+*.out
+*.gz
+*.blg
+.DS_Store
