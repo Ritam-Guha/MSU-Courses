@@ -8,5 +8,4 @@
 *.log
 *.out
 *.gz
-*.blg
 .DS_Store
