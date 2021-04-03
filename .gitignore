@@ -1,0 +1,13 @@
+*.mp4
+*.mov
+*.tex
+*.aug
+*.bib
+*.aux
+*.bbl
+*.log
+*.out
+*.gz
+*.DS_Store
+.DS_Store
+.DS_Store?
