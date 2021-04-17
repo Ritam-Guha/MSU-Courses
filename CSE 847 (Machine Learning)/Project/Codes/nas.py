@@ -4,6 +4,8 @@
 
 # Initialize the NASBench object which parses the raw data into memory (this
 # should only be run once as it takes up to a few minutes).
+import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior()
 from nasbench import api
 
 # Use nasbench_full.tfrecord for full dataset (run download command above).
