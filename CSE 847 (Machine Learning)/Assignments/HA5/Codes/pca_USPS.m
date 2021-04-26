@@ -41,6 +41,6 @@ function [recov_data] = pca_svd(raw_data, p)
     data = data * PC(:,1:p);
     
     recov_data = data * PC(:, 1:p)';    % reconstructed image
-    reconst_error = norm(raw_data - recov_data);
+    reconst_error = norm(raw_data - recov_data, 'fro');
     fprintf('The reconstruction error for p=%d is: %f\n', p ,reconst_error);
 end

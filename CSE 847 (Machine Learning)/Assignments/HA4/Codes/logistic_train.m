@@ -20,7 +20,7 @@ for i = 1: size(train_size, 2)
     train_data = data(1 : cur_train_size, :);
     train_labels = labels(1 : cur_train_size);
     
-    weights = logRegression(train_data, train_labels, 1e-5, 1000);
+    weights = logRegression(train_data, train_labels);
     accuracy(1, i) = compute_accuracy(test_data, test_labels, weights);
     fprintf('Training Size = %d: %f\n', cur_train_size, accuracy(1,i));
 end
